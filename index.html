@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OrbitGather — discover experiences, meet people and make plans.">
+  <title>OrbitGather — Find your next experience</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement">GOOD PLANS ARE CLOSER THAN YOU THINK <a href="#discover" data-view="discover">Find yours ↗</a></div>
+  <header class="site-header">
+    <a class="logo" href="#home" data-view="home"><span class="logo-mark">O</span> orbit<span>gather</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+    <nav id="mainNav">
+      <button class="nav-link active" data-view="home">Home</button>
+      <button class="nav-link" data-view="discover">Discover</button>
+      <button class="nav-link" data-view="about">About</button>
+      <button class="nav-link" data-view="bookings">My registrations <span class="count" id="bookingCount">0</span></button>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">◐</button>
+      <a class="button button-small" href="#discover" data-view="discover">Explore events <span>↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="home">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="kicker">MAKE ROOM FOR SOMETHING NEW</p>
+          <h1>Your city is<br><span>calling.</span></h1>
+          <p class="hero-description">Find concerts, workshops, food experiences and local gatherings. Pick a plan, bring a friend, or meet someone new.</p>
+          <div class="hero-actions">
+            <a class="button" href="#discover" data-view="discover">Explore experiences <b>↗</b></a>
+            <a class="under-link" href="#about" data-view="about">Why OrbitGather?</a>
+          </div>
+          <div class="hero-numbers">
+            <div><strong>80+</strong><small>curated experiences</small></div>
+            <div><strong>12k</strong><small>people connected</small></div>
+            <div><strong>4.8/5</strong><small>community rating</small></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-photo"></div>
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="photo-note">GO OUT.<br>FEEL MORE.</div>
+          <div class="photo-index">01 — 04</div>
+        </div>
+      </div>
+
+      <section class="quick-find">
+        <div><p class="kicker">START WITH A VIBE</p><h2>What are you in the mood for?</h2></div>
+        <form id="homeSearch"><input id="homeQuery" type="search" placeholder="Search music, food, art..." aria-label="Search events"><button class="button" type="submit">Find a plan →</button></form>
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading"><div><p class="kicker">THE SHORTLIST</p><h2>Worth stepping <span>out for.</span></h2></div><button class="plain-link" data-view="discover">View all events ↗</button></div>
+        <div class="event-grid" id="featuredEvents"></div>
+      </section>
+
+      <section class="colour-band">
+        <div><p class="kicker">LESS PLANNING. MORE LIVING.</p><h2>Make a little space<br>for the <em>unexpected.</em></h2></div>
+        <a class="button button-light" href="#discover" data-view="discover">Find your next plan ↗</a>
+        <div class="band-shape"></div>
+      </section>
+
+      <section class="content-section category-section">
+        <div class="section-heading"><div><p class="kicker">FOLLOW YOUR INTEREST</p><h2>Pick your <span>universe.</span></h2></div></div>
+        <div class="category-grid">
+          <button class="category-tile tile-music" data-category="Music"><span>01 / LISTEN</span><b>Music & live shows ↗</b></button>
+          <button class="category-tile tile-art" data-category="Art"><span>02 / CREATE</span><b>Art & culture ↗</b></button>
+          <button class="category-tile tile-food" data-category="Food"><span>03 / TASTE</span><b>Food experiences ↗</b></button>
+          <button class="category-tile tile-tech" data-category="Technology"><span>04 / DISCOVER</span><b>Tech & ideas ↗</b></button>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div><p class="kicker">A GOOD EMAIL, FOR ONCE</p><h2>Get the next<br><span>good thing.</span></h2></div>
+        <form id="newsletterForm"><div class="newsletter-input"><input id="newsletterEmail" type="email" placeholder="Your email address" required><button type="submit" aria-label="Subscribe">→</button></div><p id="newsletterMessage">Occasional event picks. Unsubscribe whenever.</p></form>
+      </section>
+    </section>
+
+    <section class="page" id="discover">
+      <div class="page-banner"><p class="kicker">YOUR NEXT STORY STARTS HERE</p><h1>Find something<br><span>to look forward to.</span></h1><p>Browse local experiences, filter by interest and choose a date worth remembering.</p></div>
+      <section class="content-section">
+        <div class="discover-tools"><input id="eventSearch" type="search" placeholder="Search by event, venue or keyword..."><select id="sortEvents" aria-label="Sort events"><option value="date">Date: soonest</option><option value="name">Name: A–Z</option><option value="price">Price: low to high</option></select></div>
+        <div class="filter-row" id="filterRow">
+          <button class="filter-chip active" data-filter="All">All events</button><button class="filter-chip" data-filter="Music">Music</button><button class="filter-chip" data-filter="Technology">Technology</button><button class="filter-chip" data-filter="Art">Art & culture</button><button class="filter-chip" data-filter="Food">Food</button><button class="filter-chip" data-filter="Community">Community</button><button class="filter-chip" data-filter="Free">Free</button>
+        </div>
+        <p class="results-label" id="resultsLabel"></p>
+        <div class="event-grid" id="allEvents"></div>
+        <div class="empty-state" id="emptyEvents" hidden><h2>No events found.</h2><p>Try another search term or clear the filters.</p></div>
+      </section>
+    </section>
+
+    <section class="page" id="eventDetail"><section class="content-section"><button class="back-link" data-view="discover">← Back to discover</button><div id="detailContent"></div></section></section>
+
+    <section class="page" id="register">
+      <div class="page-banner compact-banner"><p class="kicker">SAVE YOUR PLACE</p><h1>Count <span>me in.</span></h1><p>A few details and you're on the list.</p></div>
+      <section class="content-section registration-layout">
+        <aside class="registration-aside"><p class="kicker">YOUR NEXT EXPERIENCE</p><h2 id="registrationEventName">Choose an event</h2><p>Complete the form to save your registration. You can view it later under My registrations.</p><div class="aside-decoration">OG<span>✳</span></div></aside>
+        <form class="registration-form" id="registrationForm" novalidate>
+          <p class="kicker">ATTENDEE DETAILS</p>
+          <label>Full name<input id="attendeeName" type="text" placeholder="Enter your full name" minlength="2" required></label>
+          <label>Email address<input id="attendeeEmail" type="email" placeholder="name@example.com" required></label>
+          <label>Phone number<input id="attendeePhone" type="tel" placeholder="10-digit phone number" required></label>
+          <label class="consent-label"><input id="attendeeConsent" type="checkbox" required> I agree to submit my details for this demo registration.</label>
+          <p class="form-error" id="registrationError" role="alert"></p>
+          <button class="button full-button" type="submit">Confirm registration ↗</button>
+          <div class="confirmation" id="registrationConfirmation" hidden></div>
+        </form>
+      </section>
+    </section>
+
+    <section class="page" id="bookings">
+      <div class="page-banner compact-banner"><p class="kicker">YOUR PLANS, IN ONE PLACE</p><h1>Good things<br><span>are on the calendar.</span></h1><p>Here are the event registrations saved on this device.</p></div>
+      <section class="content-section"><div class="section-heading"><div><p class="kicker">YOUR LIST</p><h2>My registrations</h2></div><button class="plain-link" data-view="discover">Find another event ↗</button></div><div id="bookingList"></div><div class="empty-state" id="emptyBookings"><h2>Nothing booked. Yet.</h2><p>There's a whole city of things to discover.</p><button class="button" data-view="discover">Explore events ↗</button></div></section>
+    </section>
+
+    <section class="page" id="about">
+      <div class="page-banner"><p class="kicker">A LITTLE ABOUT US</p><h1>Better days<br>happen <span>together.</span></h1><p>OrbitGather makes it easier to find experiences, meet people and make plans beyond the everyday routine.</p></div>
+      <section class="content-section about-intro"><div><p class="kicker">THE IDEA</p><h2>Less scrolling.<br><span>More stories.</span></h2><p>We believe a city feels bigger when you take part in it. OrbitGather brings event discovery and simple registration into one welcoming place, helping people turn free time into memorable experiences.</p></div><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=85" alt="Friends spending time together outdoors"></section>
+      <section class="content-section values-section"><p class="kicker">WHAT WE CARE ABOUT</p><div class="value-grid"><article><b>01</b><h3>Stay curious</h3><p>Find something outside your usual routine and try a new interest.</p></article><article><b>02</b><h3>Meet people</h3><p>Shared experiences create connections and stories worth keeping.</p></article><article><b>03</b><h3>Keep it simple</h3><p>Clear event details and a straightforward registration flow.</p></article></div></section>
+      <section class="content-section faq-section"><p class="kicker">COMMON QUESTIONS</p><h2>Quick <span>answers.</span></h2><details><summary>How do I register for an event?</summary><p>Open Discover, select an event and press Register. Complete the form to save your registration.</p></details><details><summary>Where can I find my registrations?</summary><p>Open My registrations in the navigation. Saved entries are stored in this browser.</p></details><details><summary>Does the website work on mobile?</summary><p>Yes. The layout and navigation adapt to mobile, tablet and desktop screens.</p></details><details><summary>Are these official tickets?</summary><p>No. This is a front-end student project with sample event data. It does not issue official tickets or contact event organisers.</p></details></section>
+    </section>
+  </main>
+
+  <footer><a class="logo" href="#home" data-view="home"><span class="logo-mark">O</span> orbit<span>gather</span></a><p>Find your people. Make a plan.</p><small>© <span id="currentYear"></span> OrbitGather</small></footer>
+  <script src="app.js"></script>
+</body>
+</html>
